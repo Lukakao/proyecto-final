@@ -27,3 +27,5 @@ exports.getUsers = async () => {
   return await users;
 };
 
+//TODO:
+//mostrar publicaciones del usuario y checkear si todas siguen existiendo (eliminar del array de publicaiones si ya no existe en db)

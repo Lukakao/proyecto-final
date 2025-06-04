@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const publicationSchema = new mongoose.Schema({
   userId: {
-    Type: String,
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true,
   },
   description: {
@@ -19,11 +20,11 @@ const publicationSchema = new mongoose.Schema({
   },
   region: {
     type: String,
-    reuired: false,
+    required: false,
   },
   commune: {
     type: String,
-    reuired: false,
+    required: false,
   },
   location: {
     latitude: { type: Number, required: false },
