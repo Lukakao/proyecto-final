@@ -23,3 +23,30 @@ exports.getUsers = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.deleteUser = async (req, res) => {
+  try {
+    const deletedUser = await userService.deleteUser(req.body);
+    res.status(201).json(deletedUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}; 
+
+exports.getUserPublications = async (req, res) => {
+  try {
+    const userPublications = await userService.getUserPublications(req.params.userId);
+    res.status(201).json(userPublications);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
+
+exports.updateUserEmail = async (req, res) => {
+  try {
+    const updatedUser = await userService.updateUserEmail(req);
+    res.status(201).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};

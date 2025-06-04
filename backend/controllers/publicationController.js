@@ -28,3 +28,13 @@ exports.deletePublication = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+exports.updatePublication = async (req, res) => {
+  try {
+    const updatedPublication = await publicationService.updatePublication(req.body);
+    res.status(201).json({ updatedPublication });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
