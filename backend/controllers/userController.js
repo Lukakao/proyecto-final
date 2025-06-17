@@ -14,7 +14,7 @@ exports.getUsers = async (req, res) => {
   try {
     const users = await userService.getUsers();
     if (users) {
-      res.status(201).json(users);
+      return res.status(201).json(users);
     }
     else{
       res.status(500).json({ error: 'Error fetching users'});
@@ -46,6 +46,18 @@ exports.updateUserEmail = async (req, res) => {
   try {
     const updatedUser = await userService.updateUserEmail(req);
     res.status(201).json(updatedUser);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+exports.userLogin = async (req, res) => {
+  try {
+    const token = await userService.userLogin(req);
+    if (!token){
+      return res.status(500).json({ error: 'Error in login' });
+    }
+    res.status(201).json(token);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -1,5 +1,8 @@
 const User = require("../models/userModel");
 const validator = require('validator')
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 exports.createUser = async (userData) => {
   //validaciones:
@@ -16,7 +19,13 @@ exports.createUser = async (userData) => {
   if (existingUser) {
       throw new Error("Email already exists");
   }
+  const validRoles = ['user', 'admin'];
+  if (userData.role && !validRoles.includes(userData.role)) {
+    throw new Error("Role not valid");
+  }
 
+  const hashedPassword = await bcrypt.hash(userData.password, 10);
+  userData.password = hashedPassword;
   const newUser = new User(userData);
   return await newUser.save();
 };
@@ -55,6 +64,23 @@ exports.updateUserEmail = async (req) => {
   );
   return user;
 }
+
+exports.userLogin = async (req, res) => {
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  if (!user) throw new Error("User not found");
+
+  const valid = await bcrypt.compare(password, user.password);
+  if (!valid) throw new Error("Incorrect password");
+
+  const token = jwt.sign(
+    { userId: user._id, role: user.role },
+    process.env.JWT_SECRET,
+    { expiresIn: "1d" }
+  );
+  return token;
+};
+
 
 //TODO:
 //mostrar publicaciones del usuario y checkear si todas siguen existiendo (eliminar del array de publicaiones si ya no existe en db)

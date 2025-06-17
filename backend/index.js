@@ -12,7 +12,7 @@ fs.readdirSync(path.join(__dirname, 'routes')).forEach(file => {
   const route = require(`./routes/${file}`);
   app.use('/api', route);
 });
-connectDB()
+connectDB();
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
