@@ -1,0 +1,36 @@
+===== cuenta de guest =====
+1. ID para guest 
+2. guardar id en celular
+3. ocupar esa id para crear publicaciones y administrarlas como usuario con cuenta
+
+===== view screen =====
+4. importar threejs y expo three
+5. crear viewpanel principal vacio
+6. implementar viewpanel en una screen con tabs abajo
+7. importar modelos y texturas
+
+===== hacer mapa =====
+8. descargar data de mapa de openstreetmap
+9. analizar data y ver que se puede usar (nodos calles, densidad poblacion, edificios/casas)
+10. generar mapa con data
+11. poner marcas en mapa
+
+==== UI perfil ====
+12. panel de perfil (nombre, rating)
+13. mostrar publicaiones hechas
+14. mostrar publicaiones atendidas
+
+==== UI crear publicaion ====
+15. menu pop-up
+16. poner seccion de description
+17. dropdown-menu de categorias
+18. handle logica de generar nueva publicacion (ponerla en el mapa, agregarla al perfil, notificar otros usuarios)
+
+==== UI registro ====
+19. panel basico de registro
+20. crear formulario de registro
+21. handle logica de registro
+22. verificar OCR
+
+==== OCR ====
+23. ocr
