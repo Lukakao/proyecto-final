@@ -4,13 +4,13 @@
 3. ocupar esa id para crear publicaciones y administrarlas como usuario con cuenta
 
 ===== view screen =====
-4. importar threejs y expo three
-5. crear viewpanel principal vacio
-6. implementar viewpanel en una screen con tabs abajo
+4. importar threejs y expo three    ✓
+5. crear viewpanel principal vacio  ✓
+6. implementar viewpanel en una screen con tabs abajo   ✓
 7. importar modelos y texturas
 
 ===== hacer mapa =====
-8. descargar data de mapa de openstreetmap
+8. descargar data de mapa de openstreetmap  ✓
 9. analizar data y ver que se puede usar (nodos calles, densidad poblacion, edificios/casas)
 10. generar mapa con data
 11. poner marcas en mapa
